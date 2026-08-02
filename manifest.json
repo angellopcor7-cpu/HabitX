@@ -4,7 +4,7 @@
 
     "description": "HabitX - Cada día cuenta. Una aplicación para crear mejores hábitos.",
 
-    "start_url": "index.html",
+    "start_url": "/HabitX/",
 
     "display": "standalone",
 
@@ -31,4 +31,6 @@
         }
 
     ]
+    
 }
+
