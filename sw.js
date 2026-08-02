@@ -56,10 +56,15 @@ evento=>{
         .then(cache=>{
 
 
-            return cache.addAll(ARCHIVOS);
+            return cache.addAll(ARCHIVOS)
+.catch(error=>{
 
+    console.log(
+        "ERROR EN CACHE:",
+        error
+    );
 
-        })
+});
 
     );
 
