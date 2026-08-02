@@ -6,7 +6,7 @@
 ===================================================== */
 
 
-const CACHE_NAME = "habitx-v5";
+const CACHE_NAME = "habitx-v6";
 
 
 
