@@ -1,0 +1,217 @@
+/* =====================================================
+   HABITX 5.0 PREMIUM POLISH
+
+   modal.css
+===================================================== */
+
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.65);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-end;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.3s;
+
+    z-index:1000;
+
+}
+
+
+
+.modal.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+
+
+
+.modal-box{
+
+    width:100%;
+
+    max-width:430px;
+
+    background:#1A1A1A;
+
+    border-radius:30px 30px 0 0;
+
+    padding:25px;
+
+    transform:translateY(100%);
+
+    transition:.35s;
+
+}
+
+
+
+
+.modal.show .modal-box{
+
+    transform:translateY(0);
+
+}
+
+
+
+
+
+.modal-box h2{
+
+    margin-bottom:20px;
+
+}
+
+
+
+
+
+.modal-input{
+
+    width:100%;
+
+    padding:15px;
+
+    margin-bottom:15px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:15px;
+
+    background:#262626;
+
+    color:white;
+
+    font-size:16px;
+
+}
+
+
+
+
+
+.modal-select{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:#262626;
+
+    color:white;
+
+    margin-bottom:15px;
+
+}
+
+
+
+
+
+.modal-buttons{
+
+    display:flex;
+
+    gap:12px;
+
+}
+
+
+
+
+
+.modal-buttons button{
+
+    flex:1;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:15px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+}
+
+
+
+
+
+.btn-create{
+
+    background:#10B981;
+
+    color:white;
+
+}
+
+
+
+
+
+.btn-cancel{
+
+    background:#333;
+
+    color:white;
+
+}
+
+/* =====================================
+   MODO CLARO - MODALES
+===================================== */
+
+body.light .modal-content,
+body.light .modal-box,
+body.light .modal{
+
+    background:#FFFFFF;
+
+    color:#111827;
+
+}
+
+body.light .modal input,
+body.light .modal select,
+body.light .modal textarea{
+
+    background:#F9FAFB;
+
+    color:#111827;
+
+    border:1px solid #D1D5DB;
+
+}
+
+body.light .modal h2,
+body.light .modal h3{
+
+    color:#111827;
+
+}

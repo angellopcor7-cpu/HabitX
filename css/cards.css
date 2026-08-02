@@ -1,0 +1,491 @@
+/* =====================================
+   HABITX 5.0
+   UPDATE 2
+   PREMIUM HABIT CARDS
+===================================== */
+
+
+
+/* CONTENEDOR DE HABITOS */
+
+#listaHabitos{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+}
+
+
+
+
+
+
+
+/* TARJETA PRINCIPAL */
+
+.habito-card{
+
+    position:relative;
+
+    padding:20px;
+
+    border-radius:24px;
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(15px);
+
+    overflow:hidden;
+
+    transition:.3s ease;
+
+}
+
+
+
+
+
+
+
+.habito-card:hover{
+
+    transform:translateY(-3px);
+
+}
+
+
+
+
+
+
+
+
+/* DETALLE DE COLOR */
+
+.habito-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:0;
+
+    width:5px;
+
+    height:100%;
+
+    background:#10B981;
+
+}
+
+
+
+
+
+
+
+/* TITULO */
+
+.habito-titulo{
+
+    font-size:20px;
+
+    font-weight:700;
+
+    margin-bottom:8px;
+
+}
+
+
+
+
+
+
+
+/* INFORMACION */
+
+.habito-info{
+
+    display:flex;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
+    opacity:.75;
+
+    font-size:14px;
+
+    margin-bottom:15px;
+
+}
+
+
+
+
+
+
+
+.etiqueta{
+
+    background:#ffffff12;
+
+    padding:6px 12px;
+
+    border-radius:20px;
+
+}
+
+
+
+
+
+
+
+/* RACHA */
+
+.habito-racha{
+
+    font-size:14px;
+
+    margin-bottom:12px;
+
+    color:#10B981;
+
+}
+
+
+
+
+
+
+
+/* BARRA */
+
+.habito-progreso{
+
+    height:8px;
+
+    background:#ffffff15;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    margin-bottom:18px;
+
+}
+
+
+
+.habito-progreso span{
+
+    display:block;
+
+    height:100%;
+
+    width:0%;
+
+    background:#10B981;
+
+    border-radius:20px;
+
+    transition:.5s;
+
+}
+
+
+
+
+
+
+
+/* BOTONES */
+
+.habito-actions{
+
+    display:flex;
+
+    gap:10px;
+
+}
+
+
+
+
+
+
+
+.btn-completar,
+
+.btn-eliminar{
+
+
+    flex:1;
+
+    padding:12px;
+
+    border-radius:16px;
+
+    border:none;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    transition:.25s;
+
+}
+
+
+
+
+
+
+
+.btn-completar{
+
+
+    background:#10B981;
+
+    color:white;
+
+}
+
+
+
+
+
+
+
+.btn-eliminar{
+
+
+    background:#ffffff12;
+
+    color:white;
+
+}
+
+
+
+
+
+
+
+.btn-completar:hover,
+
+.btn-eliminar:hover{
+
+
+    transform:scale(.97);
+
+}
+
+
+
+
+
+
+
+/* COMPLETADO */
+
+.habito-card.completado{
+
+
+    opacity:.75;
+
+}
+
+
+
+.habito-card.completado .habito-titulo{
+
+
+    text-decoration:line-through;
+
+}
+
+/* =====================================
+   COLORES POR CATEGORIA
+===================================== */
+
+
+.habito-card.gym::before{
+
+    background:#10B981;
+
+}
+
+
+
+.habito-card.estudio::before{
+
+    background:#8B5CF6;
+
+}
+
+
+
+.habito-card.salud::before{
+
+    background:#EF4444;
+
+}
+
+
+
+.habito-card.finanzas::before{
+
+    background:#F59E0B;
+
+}
+
+
+
+.habito-card.personal::before{
+
+    background:#06B6D4;
+
+}
+
+
+
+
+
+
+.habito-card.gym{
+
+    box-shadow:0 0 25px #10B98122;
+
+}
+
+
+
+.habito-card.estudio{
+
+    box-shadow:0 0 25px #8B5CF622;
+
+}
+
+
+
+.habito-card.salud{
+
+    box-shadow:0 0 25px #EF444422;
+
+}
+
+
+
+.habito-card.finanzas{
+
+    box-shadow:0 0 25px #F59E0B22;
+
+}
+
+
+
+.habito-card.personal{
+
+    box-shadow:0 0 25px #06B6D422;
+
+}
+
+/* =====================================
+   FAVORITOS PREMIUM
+===================================== */
+
+
+.habito-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:10px;
+
+}
+
+
+
+.estrella-fav{
+
+
+    background:none;
+
+    border:none;
+
+    color:#F59E0B;
+
+    font-size:28px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+
+}
+
+
+
+.estrella-fav:hover{
+
+
+    transform:
+
+    scale(1.2)
+
+    rotate(15deg);
+
+
+}
+
+
+
+.habito-card.favorito{
+
+
+    border:1px solid #F59E0B55;
+
+}
+
+/* =====================================
+   TARJETA FAVORITA
+===================================== */
+
+
+.habito-card.es-favorito{
+
+
+    border:
+
+    1px solid #F59E0B66;
+
+
+    box-shadow:
+
+    0 0 25px #F59E0B22;
+
+
+}
+
+
+
+
+.habito-card.es-favorito::before{
+
+
+    background:#F59E0B;
+
+
+}

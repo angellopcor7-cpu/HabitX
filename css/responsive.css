@@ -1,0 +1,139 @@
+/* =====================================================
+   HABITX 5.0 GENESIS
+   responsive.css
+
+   Adaptación de pantallas
+===================================================== */
+
+
+
+/* CELULARES PEQUEÑOS */
+
+@media(max-width:360px){
+
+
+    .welcome h2{
+
+        font-size:26px;
+
+    }
+
+
+    .grid{
+
+        gap:10px;
+
+    }
+
+
+    .mini strong{
+
+        font-size:22px;
+
+    }
+
+
+    .card{
+
+        padding:16px;
+
+    }
+
+
+}
+
+
+
+
+
+
+
+/* CELULARES GRANDES */
+
+@media(min-width:431px){
+
+
+    body{
+
+        padding:20px;
+
+    }
+
+
+
+    #app{
+
+        border-radius:30px;
+
+        min-height:calc(100vh - 40px);
+
+        overflow:hidden;
+
+    }
+
+
+
+}
+
+
+
+
+
+
+
+/* TABLETS */
+
+@media(min-width:700px){
+
+
+    #app{
+
+        max-width:500px;
+
+    }
+
+
+
+    .welcome h2{
+
+        font-size:36px;
+
+    }
+
+
+}
+
+
+
+
+
+
+
+/* COMPUTADORAS */
+
+@media(min-width:1000px){
+
+
+    #app{
+
+        max-width:430px;
+
+    }
+
+
+}
+
+/* =====================================
+   UPDATE 3
+   OCULTAR HAMBURGUESA EN MOVIL
+===================================== */
+
+@media (max-width:768px){
+
+    #menuButton{
+
+        display:none;
+
+    }
+
+}

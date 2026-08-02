@@ -1,0 +1,139 @@
+/* =====================================================
+   HABITX 6.0
+   CONFIGURACIÓN PREMIUM
+===================================================== */
+
+.settings-card{
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:30px;
+
+    padding:25px;
+
+    margin-top:20px;
+
+}
+
+.settings-card h3{
+
+    margin-bottom:25px;
+
+    font-size:24px;
+
+}
+
+.settings-card label{
+
+    display:block;
+
+    margin-bottom:10px;
+
+    color:#9CA3AF;
+
+    font-size:14px;
+
+}
+
+.settings-card input,
+
+.settings-card select{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.06);
+
+    color:white;
+
+    font-size:16px;
+
+    margin-bottom:20px;
+
+    outline:none;
+
+    box-sizing:border-box;
+
+}
+
+.settings-card input::placeholder{
+
+    color:#888;
+
+}
+
+/* BOTONES */
+
+.config-btn{
+
+    width:100%;
+
+    border:none;
+
+    border-radius:22px;
+
+    padding:18px;
+
+    cursor:pointer;
+
+    margin-top:12px;
+
+    transition:.30s;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:12px;
+
+    font-size:16px;
+
+    font-weight:600;
+
+}
+
+.config-btn:hover{
+
+    transform:translateY(-3px);
+
+}
+
+.btn-save{
+
+    background:linear-gradient(
+        135deg,
+        #10B981,
+        #34D399
+    );
+
+    color:white;
+
+    box-shadow:
+    0 10px 30px rgba(16,185,129,.30);
+
+}
+
+.btn-reset{
+
+    background:rgba(239,68,68,.12);
+
+    border:1px solid rgba(239,68,68,.30);
+
+    color:#ffb4b4;
+
+}
+
+.btn-reset:hover{
+
+    background:rgba(239,68,68,.20);
+
+}

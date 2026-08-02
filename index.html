@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HabitX</title>
+
+
+    <!-- =========================
+         ESTILOS
+    ========================= -->
+
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/cards.css">
+    <link rel="stylesheet" href="css/carruselInicio.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/estadisticas.css">
+    <link rel="stylesheet" href="css/modalUI.css">
+    <link rel="stylesheet" href="css/configuracion.css">
+    <link rel="stylesheet" href="css/logros.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="assets/icons/icon.png">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+    <link rel="manifest" href="manifest.json">
+
+
+    <!-- =========================
+         PWA
+    ========================= -->
+
+    <link rel="manifest" href="manifest.json">
+
+
+</head>
+
+
+<body>
+
+
+<script>
+
+const temaGuardado =
+localStorage.getItem("habitx_config");
+
+
+if(temaGuardado){
+
+    const config =
+    JSON.parse(temaGuardado);
+
+
+    document.body.className =
+    config.tema;
+
+}
+
+</script>
+
+
+<!-- =========================
+     SPLASH
+========================= -->
+
+<div id="splash">
+
+    <h1>
+        HabitX
+    </h1>
+
+    <p>
+        Cada día cuenta
+    </p>
+
+</div>
+
+
+<!-- =========================
+     APP
+========================= -->
+
+<div id="app">
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <button id="menuButton">
+        ☰
+    </button>
+
+    <h1>
+        HabitX
+    </h1>
+
+</header>
+
+
+<!-- =========================
+     MENU LATERAL
+========================= -->
+
+<div id="overlay"></div>
+
+
+<aside id="menu">
+
+    <h2>
+        🌱 HabitX
+    </h2>
+
+    <p>
+        Tu progreso diario
+    </p>
+
+
+    <nav>
+
+        <button data-page="inicio">
+            🏠 Inicio
+        </button>
+
+
+        <button data-page="habitos">
+            ✅ Hábitos
+        </button>
+
+
+        <button data-page="metas">
+            🎯 Metas
+        </button>
+
+
+        <button data-page="estadisticas">
+            📊 Estadísticas
+        </button>
+
+
+        <button data-page="logros">
+            🏆 Logros
+        </button>
+
+
+        <button data-page="perfil">
+            👤 Perfil
+        </button>
+
+
+        <button data-page="configuracion">
+            ⚙️ Configuración
+        </button>
+
+    </nav>
+
+</aside>
+
+
+<!-- =========================
+     PAGINA INICIO
+========================= -->
+
+<section id="inicio" class="page active">
+
+    <div class="home-header">
+
+        <h2 id="saludo">
+            ☀️ Buenos días
+        </h2>
+
+        <p class="fecha" id="fechaActual">
+            Viernes 31 de Julio
+        </p>
+
+    </div>
+
+
+    <div class="quote-card">
+
+        <div class="quote-top">
+
+            <span id="categoriaFrase" class="categoria-frase">
+                📖 Disciplina
+            </span>
+
+        </div>
+
+
+        <blockquote id="mensajeDia">
+            "Cada día cuenta."
+        </blockquote>
+
+
+        <p id="autorFrase" class="autor-frase">
+            — HabitX
+        </p>
+
+
+        <button
+            id="otraFrase"
+            class="secondary-btn">
+
+            🔄 Otra frase
+
+        </button>
+
+    </div>
+
+
+    <div class="card">
+
+        <h3>
+            Tu progreso de hoy
+        </h3>
+
+
+        <div class="progress">
+
+            <div id="progressBar"></div>
+
+        </div>
+
+
+        <p id="progressText">
+            0%
+        </p>
+
+    </div>
+
+
+    <div class="grid">
+
+        <div class="card mini">
+
+            <strong id="totalHabitos">
+                0
+            </strong>
+
+            <p>
+                Hábitos
+            </p>
+
+        </div>
+
+
+        <div class="card mini">
+
+            <strong id="completados">
+                0
+            </strong>
+
+            <p>
+                Completados
+            </p>
+
+        </div>
+
+
+        <div class="card mini">
+
+            <strong id="racha">
+                0
+            </strong>
+
+            <p>
+                Racha 🔥
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- =========================
+     CARRUSEL DE METAS
+    ========================= -->
+
+    <div class="card" id="inicioMetas">
+
+    <div class="inicio-metas-header">
+
+        <h3>🎯 Tus metas</h3>
+
+        <button
+    id="verTodasMetas"
+    class="btn-ver-metas"
+    onclick="abrirPaginaMetas()">
+
+    Ver todas →
+
+</button>
+
+    </div>
+
+    <div id="carruselMetas">
+
+        <div class="meta-vacia">
+
+            No tienes metas todavía.
+
+        </div>
+
+    </div>
+
+</div>
+
+    <div class="card">
+
+        <h3>
+            ⭐ Favoritos
+        </h3>
+
+        <div id="favoritos">
+            No tienes favoritos todavía.
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PAGINA HABITOS
+========================= -->
+
+<section id="habitos" class="page">
+
+    <div class="titulo">
+
+        <h2>
+            Mis hábitos
+        </h2>
+        
+
+    </div>
+
+
+    <div id="listaHabitos">
+    </div>
+
+
+    <button
+        id="nuevoHabito"
+        class="fab">
+
+        +
+
+    </button>
+
+</section>
+
+
+<!-- =====================================
+     PAGINA METAS
+===================================== -->
+
+<section id="metas" class="page">
+
+    <div class="seccion-header">
+
+        <div>
+
+            <h2>
+                🎯 Mis Metas
+            </h2>
+
+            <p>
+                Convierte tus objetivos en planes.
+            </p>
+
+        </div>
+
+
+        <button
+            id="nuevaMeta"
+            class="btn-nueva-meta">
+
+            ➕ Nueva meta
+
+        </button>
+
+    </div>
+
+
+    <div id="listaMetas">
+
+        <!-- Las metas aparecerán aquí -->
+
+    </div>
+
+</section>
+
+
+<!-- =====================================
+     MODAL NUEVA META
+===================================== -->
+
+<div id="modalMeta" class="modal-meta">
+
+    <div class="modal-meta-contenido">
+
+
+        <button
+            id="cerrarModalMeta"
+            class="cerrar-modal-meta">
+
+            ✕
+
+        </button>
+
+
+        <h2>
+            🎯 Crear nueva meta
+        </h2>
+
+
+        <p class="modal-meta-subtitulo">
+
+            Crea un plan y trabaja en él poco a poco.
+
+        </p>
+
+
+        <label>
+            Nombre de la meta
+        </label>
+
+
+        <input
+            type="text"
+            id="nombreMeta"
+            placeholder="Ej. Comprar mi coche"
+        >
+
+
+        <label>
+            ¿Qué quieres conseguir?
+        </label>
+
+
+        <input
+            type="text"
+            id="objetivoMeta"
+            placeholder="Ej. Ahorrar dinero"
+        >
+
+
+        <label>
+            Meta total
+        </label>
+
+
+        <input
+            type="number"
+            id="cantidadMeta"
+            placeholder="Ej. 20000"
+            min="0"
+        >
+
+
+        <label>
+            ¿Cuánto vas a aportar?
+        </label>
+
+
+        <input
+            type="number"
+            id="aporteMeta"
+            placeholder="Ej. 1000"
+            min="0"
+        >
+
+
+        <label>
+            ¿Cada cuándo?
+        </label>
+
+
+        <select id="frecuenciaMeta">
+
+            <option value="diario">
+                Cada día
+            </option>
+
+            <option value="semanal">
+                Cada semana
+            </option>
+
+            <option value="quincenal">
+                Cada 2 semanas
+            </option>
+
+            <option value="mensual">
+                Cada mes
+            </option>
+
+        </select>
+
+
+        <label>
+            Fecha de inicio
+        </label>
+
+
+        <input
+            type="date"
+            id="fechaInicioMeta"
+        >
+
+
+        <button
+            id="guardarMeta"
+            class="btn-guardar-meta">
+
+            🚀 Crear meta
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     ESTADISTICAS
+========================= -->
+
+<section id="estadisticas" class="page">
+
+    <div class="stats-header">
+
+        <h2>📊 Estadísticas</h2>
+
+        <p>Todo tu progreso en un solo lugar.</p>
+
+    </div>
+
+    <div id="statsResumen"></div>
+
+</section>
+
+
+<!-- =========================
+     LOGROS
+========================= -->
+
+<section id="logros" class="page">
+
+    <h2>
+        🏆 Logros
+    </h2>
+
+
+    <div id="pestanasLogros"></div>
+
+
+    <div id="listaLogros"></div>
+
+</section>
+
+
+<!-- =========================
+     PERFIL
+========================= -->
+
+<section id="perfil" class="page">
+
+    <h2>
+        👤 Mi Perfil
+    </h2>
+
+
+    <div class="profile-card">
+
+
+        <div class="profile-avatar">
+            👤
+        </div>
+
+
+        <h2 id="perfilNombre">
+            Ángel
+        </h2>
+
+
+        <p>
+            Nivel <span id="perfilNivel">1</span> ⭐
+        </p>
+
+
+        <div class="xp-container">
+
+            <div id="xpBar"></div>
+
+        </div>
+
+
+        <p id="xpTexto">
+            0 / 100 XP
+        </p>
+
+
+        <div class="profile-stats">
+
+
+            <div>
+
+                🔥
+
+                <strong id="perfilRacha">
+                    0
+                </strong>
+
+                <p>
+                    Racha
+                </p>
+
+            </div>
+
+
+            <div>
+
+                ⭐
+
+                <strong id="perfilXP">
+                    0
+                </strong>
+
+                <p>
+                    XP
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CONFIGURACION
+========================= -->
+
+<section id="configuracion" class="page">
+
+    <div class="settings-card">
+
+
+        <h3>
+            ⚙️ Ajustes
+        </h3>
+
+
+        <label>
+            Nombre
+        </label>
+
+
+        <input
+            id="nuevoNombre"
+            class="modal-input"
+            placeholder="Tu nombre"
+        >
+
+
+        <button
+    id="guardarNombre"
+    class="config-btn btn-save">
+
+    💾 Guardar nombre
+
+</button>
+
+
+
+        <label>
+            Tema
+        </label>
+
+
+        <select
+            id="selectorTema"
+            class="modal-select">
+
+            <option value="dark">
+                Oscuro 🌙
+            </option>
+
+            <option value="light">
+                Claro ☀️
+            </option>
+
+        </select>
+
+
+        <button
+    id="reiniciarApp"
+    class="config-btn btn-reset">
+
+    🗑 Reiniciar HabitX
+
+</button>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MODAL NUEVO HABITO
+========================= -->
+
+<div id="modalHabito" class="modal">
+
+
+    <div class="modal-box">
+
+
+        <h2>
+            Nuevo hábito 🌱
+        </h2>
+
+
+        <input
+            id="nombreHabito"
+            class="modal-input"
+            placeholder="Nombre del hábito"
+        >
+
+
+        <select
+            id="categoriaHabito"
+            class="modal-select">
+
+            <option>
+                Salud
+            </option>
+
+            <option>
+                Gimnasio
+            </option>
+
+            <option>
+                Estudio
+            </option>
+
+            <option>
+                Personal
+            </option>
+
+        </select>
+
+
+        <input
+            id="horaHabito"
+            class="modal-input"
+            type="time"
+        >
+
+
+        <div class="modal-buttons">
+
+
+            <button
+                id="crearHabitoBtn"
+                class="btn-create">
+
+                Crear
+
+            </button>
+
+
+            <button
+                id="cerrarModalBtn"
+                class="btn-cancel">
+
+                Cancelar
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================
+     BOTTOM NAVIGATION
+========================= -->
+
+<nav id="bottomNav">
+
+
+    <button
+        class="bottom-item active"
+        data-page="inicio">
+
+        <span class="icon">
+            🏠
+        </span>
+
+        <span class="label">
+            Inicio
+        </span>
+
+    </button>
+
+
+    <button
+        class="bottom-item"
+        data-page="habitos">
+
+        <span class="icon">
+            ✅
+        </span>
+
+        <span class="label">
+            Hábitos
+        </span>
+
+    </button>
+
+
+    <button
+        class="bottom-item"
+        data-page="metas">
+
+        <span class="icon">
+            🎯
+        </span>
+
+        <span class="label">
+            Metas
+        </span>
+
+    </button>
+
+
+    <button
+        class="bottom-item"
+        data-page="estadisticas">
+
+        <span class="icon">
+            📊
+        </span>
+
+        <span class="label">
+            Stats
+        </span>
+
+    </button>
+
+
+    <button
+        class="bottom-item"
+        data-page="logros">
+
+        <span class="icon">
+            🏆
+        </span>
+
+        <span class="label">
+            Logros
+        </span>
+
+    </button>
+
+
+    <button
+        class="bottom-item"
+        data-page="perfil">
+
+        <span class="icon">
+            👤
+        </span>
+
+        <span class="label">
+            Perfil
+        </span>
+
+    </button>
+
+
+</nav>
+
+
+<!-- =========================
+     SCRIPTS
+========================= -->
+
+<script src="js/utils.js"></script>
+
+<script src="js/storage.js"></script>
+
+<script src="js/metas.js"></script>
+
+<script src="js/habitos.js"></script>
+
+<script src="js/modal.js"></script>
+
+<script src="js/inicio.js"></script>
+
+<script src="js/inicioCarrusel.js"></script>
+
+<script src="js/modalUI.js"></script>
+
+<script src="js/menu.js"></script>
+
+<script src="js/estadisticas.js"></script>
+
+<script src="js/data/frases.js"></script>
+
+<script src="js/perfil.js"></script>
+
+<script src="js/frases.js"></script>
+
+<script src="js/configuracion.js"></script>
+
+<script src="js/logros.js"></script>
+
+<script src="js/app.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,353 @@
+/* =====================================================
+   HABITX 5.0
+   UPDATE 3
+   PREMIUM ANIMATIONS
+===================================================== */
+
+
+/* =====================================
+   APP
+===================================== */
+
+.hidden{
+
+    display:none;
+
+}
+
+
+
+.app-show{
+
+    animation:appFade .55s ease;
+
+}
+
+
+
+@keyframes appFade{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(15px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+
+
+
+/* =====================================
+   SPLASH
+===================================== */
+
+#splash{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:9999;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:18px;
+
+    background:#0f172a;
+
+}
+
+
+
+#splash h1{
+
+    font-size:48px;
+
+    animation:logoPop .8s ease;
+
+}
+
+
+
+#splash p{
+
+    opacity:.75;
+
+    letter-spacing:2px;
+
+    animation:fadeUp .8s ease;
+
+}
+
+
+
+.splash-hide{
+
+    animation:splashOut .7s forwards;
+
+}
+
+
+
+@keyframes splashOut{
+
+    to{
+
+        opacity:0;
+
+        transform:scale(1.08);
+
+    }
+
+}
+
+
+
+
+
+/* =====================================
+   TARJETAS
+===================================== */
+
+.card,
+
+.habito-card{
+
+    will-change:transform,opacity;
+
+}
+
+
+
+
+
+/* =====================================
+   BOTONES
+===================================== */
+
+button{
+
+    transition:
+
+    transform .2s,
+
+    filter .2s;
+
+}
+
+
+
+button:hover{
+
+    transform:translateY(-2px);
+
+}
+
+
+
+button:active{
+
+    transform:scale(.95);
+
+}
+
+
+
+
+
+/* =====================================
+   KEYFRAMES
+===================================== */
+
+@keyframes logoPop{
+
+    0%{
+
+        opacity:0;
+
+        transform:scale(.6);
+
+    }
+
+    100%{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(15px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* =====================================
+   RIPPLE
+===================================== */
+
+
+button{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+
+.ripple{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.35);
+
+    transform:scale(0);
+
+    animation:rippleAnimation .6s linear;
+
+    pointer-events:none;
+
+}
+
+
+
+@keyframes rippleAnimation{
+
+
+    to{
+
+        transform:scale(2.5);
+
+        opacity:0;
+
+    }
+
+}
+
+/* =====================================
+   NUEVO HABITO ENTRADA
+===================================== */
+
+
+.habit-enter{
+
+    animation:habitEnter .45s ease forwards;
+
+}
+
+
+
+@keyframes habitEnter{
+
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px) scale(.95);
+
+    }
+
+
+    70%{
+
+        transform:translateY(-8px) scale(1.02);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0) scale(1);
+
+    }
+
+}
+
+/* =====================================
+   ELIMINAR HABITO
+===================================== */
+
+
+.habit-delete{
+
+
+    animation:
+
+    habitDelete .4s ease forwards;
+
+
+}
+
+
+
+
+@keyframes habitDelete{
+
+
+    from{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+
+    to{
+
+        opacity:0;
+
+        transform:
+
+        scale(.7)
+
+        translateY(30px);
+
+    }
+
+
+}

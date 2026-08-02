@@ -1,0 +1,167 @@
+/* =====================================================
+   HABITX 6.0
+   Modal Premium
+===================================================== */
+
+.habitx-modal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.55);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.30s;
+
+    z-index:99999;
+
+}
+
+.habitx-modal.mostrar{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+.habitx-modal-box{
+
+    width:90%;
+
+    max-width:360px;
+
+    background:#171717;
+
+    border-radius:30px;
+
+    padding:35px;
+
+    text-align:center;
+
+    color:white;
+
+    transform:scale(.8);
+
+    transition:.30s;
+
+}
+
+.habitx-modal.mostrar .habitx-modal-box{
+
+    transform:scale(1);
+
+}
+
+.habitx-icono{
+
+    font-size:70px;
+
+    margin-bottom:15px;
+
+}
+
+.habitx-modal-box h2{
+
+    margin:0;
+
+    margin-bottom:15px;
+
+}
+
+.habitx-modal-box p{
+
+    opacity:.8;
+
+    margin-bottom:30px;
+
+}
+
+.habitx-btn{
+
+    width:100%;
+
+    border:none;
+
+    background:#10B981;
+
+    color:white;
+
+    padding:15px;
+
+    border-radius:15px;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+}
+
+.habitx-botones{
+
+    display:flex;
+
+    gap:12px;
+
+    margin-top:25px;
+
+}
+
+.habitx-btn,
+.habitx-btn-cancelar{
+
+    flex:1;
+
+    border:none;
+
+    border-radius:16px;
+
+    padding:15px;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    font-weight:600;
+
+}
+
+.habitx-btn{
+
+    background:#10B981;
+
+    color:white;
+
+}
+
+.habitx-btn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.habitx-btn-cancelar{
+
+    background:#2D3748;
+
+    color:#E5E7EB;
+
+}
+
+.habitx-btn-cancelar:hover{
+
+    background:#374151;
+
+}

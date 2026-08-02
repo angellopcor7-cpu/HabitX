@@ -1,0 +1,161 @@
+/* =====================================
+   HABITX 5.0
+   SISTEMA DE LOGROS PREMIUM
+===================================== */
+
+
+#listaLogros{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+    margin-top:20px;
+
+}
+
+
+
+.logro-card{
+
+    padding:20px;
+
+    border-radius:24px;
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(15px);
+
+    transition:.3s;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+
+.logro-card:hover{
+
+    transform:translateY(-3px);
+
+}
+
+
+
+.logro-card h3{
+
+    font-size:20px;
+
+    margin-bottom:8px;
+
+}
+
+
+
+.logro-card p{
+
+    color:#9CA3AF;
+
+    margin-bottom:15px;
+
+}
+
+
+
+
+.logro-bar{
+
+    height:10px;
+
+    background:#ffffff15;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    margin-bottom:10px;
+
+}
+
+
+
+.logro-bar span{
+
+    display:block;
+
+    height:100%;
+
+    background:#10B981;
+
+    border-radius:20px;
+
+    transition:.5s;
+
+}
+
+
+
+
+
+.logro-card small{
+
+    color:#9CA3AF;
+
+    font-size:14px;
+
+}
+
+
+
+/* BLOQUEADO */
+
+.logro-card:not(.desbloqueado){
+
+    opacity:.65;
+
+}
+
+
+
+
+/* DESBLOQUEADO */
+
+.logro-card.desbloqueado{
+
+    border:1px solid #10B98166;
+
+    box-shadow:
+
+    0 0 25px #10B98122;
+
+}
+
+
+
+.logro-card.desbloqueado::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:100px;
+
+    height:100px;
+
+    right:-40px;
+
+    top:-40px;
+
+    background:#10B981;
+
+    opacity:.15;
+
+    border-radius:50%;
+
+}
