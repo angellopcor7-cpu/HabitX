@@ -30,7 +30,7 @@ const ARCHIVOS = [
 
     "./js/habitos.js",
 
-    "./js/categorias.js",
+    "./js/categoria.js",
 
     "./js/utils.js"
 
