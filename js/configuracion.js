@@ -71,6 +71,68 @@ function eventosConfiguracion(){
     const reset =
     document.getElementById("reiniciarApp");
 
+    const notificaciones =
+document.getElementById("activarNotificaciones");
+
+
+
+if(notificaciones){
+
+
+    notificaciones.onclick = async()=>{
+
+
+        const permiso =
+        await Notification.requestPermission();
+
+
+
+        if(permiso==="granted"){
+
+
+            const config =
+            obtenerConfiguracion();
+
+
+            config.notificaciones = true;
+
+
+            guardarConfiguracion(config);
+
+
+
+            enviarNotificacion(
+
+                "HabitX 🌱",
+
+                "Las notificaciones están activadas correctamente 🔥"
+
+            );
+
+
+
+            notificaciones.textContent =
+            "✅ Notificaciones activadas";
+
+
+        }
+
+
+        else{
+
+
+            alert(
+                "Necesitas permitir las notificaciones"
+            );
+
+
+        }
+
+
+    };
+
+
+}
 
 
 
@@ -156,8 +218,118 @@ function eventosConfiguracion(){
         );
 
     };
+    if(notificaciones){
+
+
+    notificaciones.onclick = async()=>{
+
+
+        const permiso =
+        await Notification.requestPermission();
+
+
+
+        if(permiso==="granted"){
+
+
+            const config =
+            obtenerConfiguracion();
+
+
+            config.notificaciones = true;
+
+
+            guardarConfiguracion(config);
+
+
+
+            enviarNotificacion(
+    "HabitX 🌱",
+    "Las notificaciones están activadas correctamente 🔥"
+);
+
+
+            notificaciones.textContent =
+            "✅ Notificaciones activadas";
+
+
+        }
+
+
+        else{
+
+
+            alert(
+            "Necesitas permitir las notificaciones"
+            );
+
+
+        }
+
+
+    };
+
 
 }
+}
+
+
+}
+function enviarNotificacion(titulo, mensaje){
+
+
+    if(Notification.permission !== "granted"){
+
+        return;
+
+    }
+
+
+
+    new Notification(
+
+        titulo,
+
+        {
+
+            body:mensaje,
+
+        }
+
+    );
+
+
+}
+
+// =====================================
+// NOTIFICACIONES HABITX
+// =====================================
+
+
+function enviarNotificacion(titulo, mensaje){
+
+
+    if(Notification.permission !== "granted"){
+
+        return;
+
+    }
+
+
+
+    new Notification(
+
+        titulo,
+
+        {
+
+            body: mensaje,
+
+            icon: "./assets/icons/icon-192.png"
+
+        }
+
+    );
 
 
 }

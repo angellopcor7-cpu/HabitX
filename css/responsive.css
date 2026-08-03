@@ -132,7 +132,7 @@
 
     #menuButton{
 
-        display:none;
+        display:flex;
 
     }
 

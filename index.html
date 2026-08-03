@@ -849,50 +849,18 @@ class="filtro-finanzas">
 
 </button>
 
-    <button
-        class="bottom-item"
-        data-page="estadisticas">
-
-        <span class="icon">
-            📊
-        </span>
-
-        <span class="label">
-            Stats
-        </span>
-
-    </button>
+<label>
+    Notificaciones
+</label>
 
 
-    <button
-        class="bottom-item"
-        data-page="logros">
+<button
+    id="activarNotificaciones"
+    class="config-btn btn-save">
 
-        <span class="icon">
-            🏆
-        </span>
+    🔔 Activar notificaciones
 
-        <span class="label">
-            Logros
-        </span>
-
-    </button>
-
-
-    <button
-        class="bottom-item"
-        data-page="perfil">
-
-        <span class="icon">
-            👤
-        </span>
-
-        <span class="label">
-            Perfil
-        </span>
-
-    </button>
-
+</button>
 
 </nav>
 
@@ -1147,7 +1115,43 @@ class="filtro-finanzas">
             </option>
 
         </select>
+        
+        <label>
+    Frecuencia
+</label>
 
+
+<select
+    id="frecuenciaHabito"
+    class="modal-select">
+
+
+    <option value="diario">
+        Todos los días
+    </option>
+
+
+    <option value="5">
+        5 días a la semana
+    </option>
+
+
+    <option value="4">
+        4 días a la semana
+    </option>
+
+
+    <option value="3">
+        3 días a la semana
+    </option>
+
+
+    <option value="2">
+        2 días a la semana
+    </option>
+
+
+</select>
 
 
         <input
@@ -1336,6 +1340,8 @@ Finanzas
 <script src="js/frases.js"></script>
 
 <script src="js/configuracion.js"></script>
+
+<script src="js/notificaciones.js"></script>
 
 <script src="js/logros.js"></script>
 

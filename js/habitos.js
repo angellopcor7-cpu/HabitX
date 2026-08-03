@@ -28,15 +28,17 @@ function reiniciarHabitosDiarios(){
     habitos.forEach(habito=>{
 
         if(
-            habito.completado &&
-            habito.ultimaFecha !== hoy
-        ){
+    habito.completado &&
+    habito.ultimaFecha !== hoy
+){
 
-            habito.completado = false;
+    habito.completado = false;
 
-            cambios = true;
+    habito.racha = 0;
 
-        }
+    cambios = true;
+
+}
 
     });
 
@@ -116,8 +118,8 @@ function cargarHabitos(){
 ${obtenerClaseCategoria(habito.categoria)}
 
 ${habito.favorito ? "es-favorito":""}
-${habito.completado ? "completado":""}`;
-
+${habito.completado ? "completado":""}
+${semanaCompletada(habito) ? "semana-lista":""}`;
 
         const progreso = habito.completado ? 100 : 0;
 
@@ -185,10 +187,28 @@ ${habito.completado ? "completado":""}`;
         <div class="habito-racha">
 
 
-            🔥 Racha: ${habito.racha || 0} días
+    🔥 Racha: ${habito.racha || 0} días
 
 
-        </div>
+</div>
+
+
+
+<div class="habito-semana">
+
+
+    📅 Esta semana:
+
+    ${obtenerProgresoSemanal(habito)}
+
+    /
+
+    ${habito.objetivoSemanal || 7}
+
+    días
+
+
+</div>
 
 
 
@@ -215,9 +235,11 @@ ${habito.completado ? "completado":""}`;
 
             <button
 
-            class="btn-completar"
+class="btn-completar"
 
-            onclick="completarHabito('${habito.id}')">
+${semanaCompletada(habito) ? "disabled":""}
+
+onclick="completarHabito('${habito.id}')">
 
 
             ${habito.completado ? "✅ Completado":"⭕ Completar"}
@@ -230,19 +252,15 @@ ${habito.completado ? "completado":""}`;
 
 
 
-            <button
+ <button
 
-            class="btn-eliminar"
+class="btn-eliminar"
 
-            onclick="eliminarHabito('${habito.id}')">
+onclick="eliminarHabito('${habito.id}')">
 
+🗑️
 
-            🗑️
-
-
-            </button>
-
-
+</button>
 
         </div>
 
@@ -329,7 +347,52 @@ function completarHabito(id){
 
     if(habito.completado){
 
-        habito.racha++;
+        actualizarRachaSemanal(habito);
+
+            // =====================================
+    // NOTIFICACION DE RACHA
+    // =====================================
+
+    if(typeof enviarNotificacion === "function"){
+
+
+        if(habito.racha === 7){
+
+
+            enviarNotificacion(
+
+                "HabitX 🔥",
+
+                "¡7 días seguidos cumpliendo "
+                + habito.nombre
+                + "! Sigue así 💪"
+
+            );
+
+
+        }
+
+
+
+        if(habito.racha === 30){
+
+
+            enviarNotificacion(
+
+                "HabitX 🏆",
+
+                "¡30 días de disciplina con "
+                + habito.nombre
+                + "! Eres constante 🔥"
+
+            );
+
+
+        }
+
+
+    }
+
 
         habito.ultimaFecha = obtenerFechaActual();
 
@@ -610,6 +673,148 @@ function obtenerClaseCategoria(categoria){
 
 
     return "personal";
+
+
+}
+
+// =====================================
+// PROGRESO SEMANAL DEL HABITO
+// =====================================
+
+function obtenerProgresoSemanal(habito){
+
+
+    if(!Array.isArray(habito.historial)){
+
+        return 0;
+
+    }
+
+
+
+    const hoy = new Date();
+
+
+    const diaSemana = hoy.getDay();
+
+
+    const inicioSemana = new Date(hoy);
+
+
+    inicioSemana.setDate(
+        hoy.getDate() - diaSemana
+    );
+
+
+    inicioSemana.setHours(
+        0,0,0,0
+    );
+
+
+
+    const completados = habito.historial.filter(item=>{
+
+
+        const fecha =
+        new Date(item.fecha);
+
+
+
+        return (
+            item.completado &&
+            fecha >= inicioSemana
+        );
+
+
+    });
+
+
+
+    return completados.length;
+
+
+}
+
+function actualizarRachaSemanal(habito){
+
+
+    const progreso =
+    obtenerProgresoSemanal(habito);
+
+
+
+    const objetivo =
+    habito.objetivoSemanal || 7;
+
+
+
+    const semana =
+    obtenerSemanaActual();
+
+
+
+    if(
+        progreso >= objetivo &&
+        habito.ultimaSemanaCumplida !== semana
+    ){
+
+        habito.racha++;
+
+
+        habito.ultimaSemanaCumplida = semana;
+
+    }
+
+
+}
+
+// =====================================
+// SEMANA ACTUAL
+// =====================================
+
+function obtenerSemanaActual(){
+
+    const fecha = new Date();
+
+    const inicioAño =
+    new Date(fecha.getFullYear(),0,1);
+
+
+    const dias =
+    Math.floor(
+        (fecha - inicioAño) /
+        (1000 * 60 * 60 * 24)
+    );
+
+
+    const semana =
+    Math.ceil(
+        (dias + inicioAño.getDay() + 1) / 7
+    );
+
+
+    return fecha.getFullYear() + "-" + semana;
+
+}
+
+// =====================================
+// HABITO COMPLETADO SEMANALMENTE
+// =====================================
+
+function semanaCompletada(habito){
+
+
+    const progreso =
+    obtenerProgresoSemanal(habito);
+
+
+
+    const objetivo =
+    habito.objetivoSemanal || 7;
+
+
+
+    return progreso >= objetivo;
 
 
 }

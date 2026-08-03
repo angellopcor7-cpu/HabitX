@@ -200,14 +200,70 @@ evento=>{
 
                 body:datos.mensaje,
 
-                icon:"./icon.png",
+                icon:"./assets/icons/icon-192.png",
 
-                badge:"./icon.png"
+badge:"./assets/icons/icon-192.png"
 
             }
 
         )
 
     );
+
+});
+
+// =====================================
+// CLICK EN NOTIFICACION
+// =====================================
+
+self.addEventListener(
+"notificationclick",
+evento=>{
+
+
+    evento.notification.close();
+
+
+
+    evento.waitUntil(
+
+        clients.matchAll({
+
+            type:"window",
+
+            includeUncontrolled:true
+
+        })
+
+        .then(clientes=>{
+
+
+            for(const cliente of clientes){
+
+
+                if("focus" in cliente){
+
+                    return cliente.focus();
+
+                }
+
+
+            }
+
+
+
+            if(clients.openWindow){
+
+                return clients.openWindow(
+                    "/HabitX/"
+                );
+
+            }
+
+
+        })
+
+    );
+
 
 });

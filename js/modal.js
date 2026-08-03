@@ -130,31 +130,33 @@ function crearHabitoDesdeModal(){
 
 
     const nombre =
-    document.getElementById("nombreHabito");
+document.getElementById("nombreHabito").value;
 
 
-    const categoria =
-    document.getElementById("categoriaHabito");
+const categoria =
+document.getElementById("categoriaHabito").value;
 
 
-    const hora =
-    document.getElementById("horaHabito");
+const hora =
+document.getElementById("horaHabito").value;
+
+
+const frecuencia =
+document.getElementById("frecuenciaHabito").value;
+
+
+   if(!nombre){
+
+    return;
+
+}
 
 
 
 
-    if(!nombre){
-
-        return;
-
-    }
 
 
-
-
-
-
-    if(nombre.value.trim()===""){
+   if(nombre.trim()===""){
 
 
         alert(
@@ -175,21 +177,15 @@ function crearHabitoDesdeModal(){
 
     crearNuevoHabito({
 
+    nombre: nombre,
 
-        nombre:
-        nombre.value,
+    categoria: categoria,
 
+    hora: hora,
 
-        categoria:
-        categoria ? categoria.value : "General",
+    frecuencia: frecuencia
 
-
-        hora:
-        hora ? hora.value : ""
-
-
-    });
-
+});
 
 
 

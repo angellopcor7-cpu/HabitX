@@ -24,6 +24,8 @@ const STORAGE_KEYS = {
 
     FINANZAS: "habitx_finanzas",
 
+    RECORDATORIOS:"habitx_recordatorios",
+
 };
 
 
@@ -142,6 +144,12 @@ function crearNuevoHabito(datos){
 
         hora: datos.hora || "",
 
+        frecuencia: datos.frecuencia || "diario",
+
+        objetivoSemanal:
+datos.frecuencia === "diario"
+? 7
+: Number(datos.frecuencia),
 
         favorito:false,
 
@@ -150,6 +158,8 @@ function crearNuevoHabito(datos){
 
 
         racha:0,
+
+        ultimaSemanaCumplida:null,
 
 
         historial:[],
@@ -331,7 +341,7 @@ function obtenerConfiguracion(){
 
         return {
 
-    nombre:"Ángel",
+    nombre:"",
 
     tema:"dark",
 
@@ -339,7 +349,9 @@ function obtenerConfiguracion(){
 
     nivel:1,
 
-    racha:0
+    racha:0,
+
+    notificaciones:false
 
 };
 
@@ -545,6 +557,34 @@ function guardarProximosGastos(gastos){
         "PROXIMOS_GASTOS",
 
         JSON.stringify(gastos)
+
+    );
+
+
+}
+
+function obtenerRecordatorios(){
+
+
+    return obtenerDatos(
+
+        STORAGE_KEYS.RECORDATORIOS
+
+    );
+
+
+}
+
+
+
+function guardarRecordatorios(recordatorios){
+
+
+    guardarDatos(
+
+        STORAGE_KEYS.RECORDATORIOS,
+
+        recordatorios
 
     );
 
