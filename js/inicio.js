@@ -19,9 +19,11 @@ function cargarInicioPremium(){
 
     actualizarResumenPremium();
 
-    mostrarFavoritos();
+mostrarFavoritos();
 
-    actualizarMensaje();
+actualizarSaludo();
+
+actualizarMensaje();
 
     if(typeof cargarCarruselMetas==="function"){
 
@@ -317,7 +319,230 @@ function mostrarFavoritos(){
 
 
 
+function obtenerSaludoHora(){
 
+    const hora = new Date().getHours();
+
+
+    if(hora >= 5 && hora < 12){
+
+        return "☀️ Buenos días";
+
+    }
+
+
+    if(hora >= 12 && hora < 19){
+
+        return "🌤️ Buenas tardes";
+
+    }
+
+
+    return "🌙 Buenas noches";
+
+}
+
+function obtenerMensajeFestivo(){
+
+    const fecha = new Date();
+
+    const dia = fecha.getDate();
+
+    const mes = fecha.getMonth()+1;
+
+
+    const festividades = {
+
+
+        "5-2":
+        "🇲🇽 Feliz Día de la Constitución",
+
+
+        "24-2":
+        "🇲🇽 Feliz Día de la Bandera",
+
+
+        "21-3":
+        "🌱 Feliz Natalicio de Benito Juárez",
+
+
+        "1-5":
+        "👷 Feliz Día del Trabajo",
+
+
+        "15-5":
+        "📚 Feliz Día del Maestro",
+
+
+        "16-9":
+        "🇲🇽 ¡Viva México! Feliz Día de la Independencia",
+
+
+        "2-11":
+        "🕯️ Feliz Día de Muertos",
+
+
+        "12-12":
+        "🙏 Día de la Virgen de Guadalupe"
+
+
+    };
+
+
+    const clave = `${dia}-${mes}`;
+
+
+    return festividades[clave] || null;
+
+}
+
+function actualizarSaludo(){
+
+    const saludo = document.getElementById("saludo");
+
+    if(!saludo)return;
+
+    const festividad = obtenerFestividad();
+
+
+if(festividad){
+
+    saludo.textContent = festividad;
+
+    return;
+
+}
+
+    const hora = new Date().getHours();
+
+
+    if(hora >= 5 && hora < 12){
+
+        saludo.textContent = "☀️ Buenos días";
+
+    }
+
+    else if(hora >= 12 && hora < 19){
+
+        saludo.textContent = "🌤️ Buenas tardes";
+
+    }
+
+    else{
+
+        saludo.textContent = "🌙 Buenas noches";
+
+    }
+
+}
+
+function obtenerFestividad(){
+
+    const fecha = new Date();
+
+    const dia = fecha.getDate();
+
+    const mes = fecha.getMonth()+1;
+
+
+    const eventos = {
+
+        // 🇲🇽 MÉXICO
+
+        "5-2":
+        "🇲🇽 Feliz Día de la Constitución",
+
+
+        "24-2":
+        "🇲🇽 Feliz Día de la Bandera",
+
+
+        "21-3":
+        "🌱 Feliz Natalicio de Benito Juárez",
+
+
+        "30-4":
+        "🎉 Feliz Día del Niño",
+
+
+        "1-5":
+        "👷 Feliz Día del Trabajo",
+
+
+        "5-5":
+        "🇲🇽 Conmemoración de la Batalla de Puebla",
+
+
+        "10-5":
+        "💐 Feliz Día de las Madres",
+
+
+        "15-5":
+        "📚 Feliz Día del Maestro",
+
+
+        "16-9":
+        "🇲🇽 ¡Viva México! Feliz Independencia",
+
+
+        "2-11":
+        "🕯️ Feliz Día de Muertos",
+
+
+        "20-11":
+        "🇲🇽 Revolución Mexicana",
+
+
+        "12-12":
+        "🙏 Día de la Virgen de Guadalupe",
+
+
+        // 🌎 OTRAS FECHAS
+
+        "14-2":
+        "❤️ Feliz Día del Amor y la Amistad",
+
+
+        "8-3":
+        "🌸 Día Internacional de la Mujer",
+
+
+        "22-4":
+        "🌎 Día de la Tierra",
+
+
+        "5-6":
+        "🌱 Día Mundial del Medio Ambiente",
+
+
+        "21-6":
+        "☀️ Inicio del verano",
+
+
+        "31-10":
+        "🎃 Feliz Halloween",
+
+
+        "24-12":
+        "🎄 Nochebuena",
+
+
+        "25-12":
+        "🎄 Feliz Navidad",
+
+
+        "31-12":
+        "🎆 Feliz Año Nuevo"
+
+    };
+
+
+    const clave = `${dia}-${mes}`;
+
+
+    return eventos[clave] || null;
+
+}
 // =====================================
 // MENSAJE DEL DIA
 // =====================================
@@ -349,55 +574,85 @@ function actualizarMensaje(){
 
     ).length;
 
-
-
-    const total=habitos.length;
-
+    const total = habitos.length;
 
 
 
+    const saludo = obtenerSaludoHora();
 
-    if(total===0){
+    const festivo = obtenerMensajeFestivo();
 
-
-        mensaje.textContent=
-
-        "🌱 Empieza creando tu primer hábito";
+let mensajeDia="";
 
 
-    }
-
-    else if(completados===total){
+if(total===0){
 
 
-        mensaje.textContent=
+    mensajeDia=
 
-        "🔥 Día completado. Excelente trabajo";
-
-
-    }
-
-    else if(completados>0){
+    "🌱 Empieza creando tu primer hábito";
 
 
-        mensaje.textContent=
+}
 
-        "💪 Vas avanzando. Sigue así";
-
-
-    }
-
-    else{
+else if(completados===total){
 
 
-        mensaje.textContent=
+    mensajeDia=
 
-        "🚀 Hoy es una nueva oportunidad";
-
-
-    }
+    "🔥 Día completado. Excelente trabajo";
 
 
+}
+
+else if(completados>0){
+
+
+    mensajeDia=
+
+    "💪 Vas avanzando. Sigue así";
+
+
+}
+
+else{
+
+
+    mensajeDia=
+
+    "🚀 Hoy es una nueva oportunidad";
+
+
+}
+
+
+
+if(festivo){
+
+
+    mensaje.textContent =
+
+    festivo
+
+    + "\n\n"
+
+    + "✨ Disfruta este día y sigue creciendo.";
+
+
+}
+else{
+
+
+    mensaje.textContent =
+
+    saludo
+
+    + "\n\n"
+
+    + mensajeDia;
+
+
+}
 }
 
 function cargarInicio(){
