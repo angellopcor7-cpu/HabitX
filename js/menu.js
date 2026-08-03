@@ -250,6 +250,23 @@ function cambiarPagina(pagina){
 
     });
 
+    
+// Cargar finanzas al entrar a la página
+
+if(pagina === "finanzas"){
+
+
+    if(typeof cargarCartera === "function"){
+
+
+        cargarCartera();
+
+
+    }
+
+
+}
+
 }
 
 function activarBotonMenu(boton){

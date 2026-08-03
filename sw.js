@@ -16,22 +16,21 @@ const ARCHIVOS = [
 
     "./index.html",
 
-    "./css/style.css",
+    "./manifest.json",
 
+    "./css/style.css",
     "./css/responsive.css",
+    "./css/modal.css",
+    "./css/cards.css",
 
     "./js/app.js",
-
     "./js/storage.js",
-
     "./js/menu.js",
-
     "./js/inicio.js",
-
     "./js/habitos.js",
-
     "./js/categoria.js",
-
+    "./js/modal.js",
+    "./js/finanzas.js",
     "./js/utils.js"
 
 ];
@@ -56,24 +55,27 @@ evento=>{
         .then(cache=>{
 
 
-            return cache.addAll(ARCHIVOS)
-.catch(error=>{
+            return cache.addAll(ARCHIVOS);
 
-    console.log(
-        "ERROR EN CACHE:",
-        error
-    );
 
-});
+        })
+
+        .catch(error=>{
+
+
+            console.log(
+                "ERROR EN CACHE:",
+                error
+            );
+
+
+        })
+
 
     );
 
 
 }
-
-
-
-
 
 );
 

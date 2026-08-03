@@ -137,6 +137,10 @@ if(temaGuardado){
             🎯 Metas
         </button>
 
+        <button data-page="finanzas">
+        💰 Finanzas
+        </button>
+
 
         <button data-page="estadisticas">
             📊 Estadísticas
@@ -211,6 +215,57 @@ if(temaGuardado){
         </button>
 
     </div>
+
+    <!-- =========================
+     MI CARTERA
+========================= -->
+
+<div class="card cartera-card">
+
+
+    <h3>
+        💵 Mi cartera
+    </h3>
+
+
+    <h1 id="saldoCartera">
+        $0
+    </h1>
+
+
+    <p>
+        Dinero disponible
+    </p>
+
+
+    <div class="cartera-movimientos">
+
+        <h4>
+            Últimos movimientos
+        </h4>
+
+
+        <div id="listaMovimientos">
+
+            <p>
+                Sin movimientos
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <button
+    id="agregarDinero"
+    class="btn-create">
+
+        ➕ Agregar dinero
+
+    </button>
+
+
+</div>
 
 
     <div class="card">
@@ -395,10 +450,96 @@ if(temaGuardado){
 
 </section>
 
+<!-- =========================
+     FINANZAS
+========================= -->
+<section id="finanzas" class="page">
+
+
+    <div class="home-header">
+
+        <h2>
+            💰 Finanzas
+        </h2>
+
+        <p class="fecha">
+            Controla tu dinero y gastos
+        </p>
+
+        <div class="finanzas-filtros">
+
+
+    <button
+id="btnIngresos"
+class="filtro-finanzas">
+
+➕
+
+</button>
+
+
+
+    <button
+    id="btnEgresos"
+    class="filtro-finanzas">
+
+        ➖
+
+    </button>
+
+
+
+    <button
+    id="btnProximos"
+    class="filtro-finanzas">
+
+        📅
+
+    </button>
+
+
+</div>
+
+    </div>
+
+    <div class="card">
+
+    <h3>
+        💰 Disponible
+    </h3>
+
+
+    <h1 id="saldoFinanzas">
+        $0
+    </h1>
+
+
+    <p>
+        Dinero disponible actualmente
+    </p>
+
+
+</div>
+
+
+
+    <div class="card">
+
+
+    <div id="contenidoFinanzas">
+
+
+    </div>
+
+
+</div>    
+
+</section>
 
 <!-- =====================================
-     MODAL NUEVA META
+     MODAL AGREGAR DINERO
 ===================================== -->
+
 
 <div id="modalMeta" class="modal-meta">
 
@@ -524,7 +665,6 @@ if(temaGuardado){
     </div>
 
 </div>
-
 
 <!-- =========================
      ESTADISTICAS
@@ -709,11 +849,260 @@ if(temaGuardado){
 
 </button>
 
+    <button
+        class="bottom-item"
+        data-page="estadisticas">
 
-    </div>
+        <span class="icon">
+            📊
+        </span>
+
+        <span class="label">
+            Stats
+        </span>
+
+    </button>
+
+
+    <button
+        class="bottom-item"
+        data-page="logros">
+
+        <span class="icon">
+            🏆
+        </span>
+
+        <span class="label">
+            Logros
+        </span>
+
+    </button>
+
+
+    <button
+        class="bottom-item"
+        data-page="perfil">
+
+        <span class="icon">
+            👤
+        </span>
+
+        <span class="label">
+            Perfil
+        </span>
+
+    </button>
+
+
+</nav>
 
 </section>
 
+<!-- =====================================
+     MODAL AGREGAR DINERO
+===================================== -->
+
+
+<div id="modalDinero" class="modal">
+
+
+    <div class="modal-box">
+
+
+        <h2>
+            💵 Agregar dinero
+        </h2>
+
+
+        <p>
+            Registra un nuevo ingreso.
+        </p>
+
+
+        <input
+            id="cantidadDinero"
+            class="modal-input"
+            type="number"
+            placeholder="Cantidad"
+        >
+
+
+        <input
+            id="conceptoDinero"
+            class="modal-input"
+            type="text"
+            placeholder="¿De dónde viene este dinero?"
+        >
+
+
+        <div class="modal-buttons">
+
+
+            <button
+                id="guardarDinero"
+                class="btn-create">
+
+                Guardar
+
+            </button>
+
+
+            <button
+                id="cancelarDinero"
+                class="btn-cancel">
+
+                Cancelar
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+<!-- =====================================
+     MODAL AGREGAR EGRESO
+===================================== -->
+
+
+<div id="modalEgreso" class="modal">
+
+
+    <div class="modal-box">
+
+
+        <h2>
+            💸 Registrar gasto
+        </h2>
+
+
+        <p>
+            Registra un nuevo egreso.
+        </p>
+
+
+
+        <input
+            id="cantidadEgreso"
+            class="modal-input"
+            type="number"
+            placeholder="Cantidad"
+        >
+
+
+
+        <input
+            id="conceptoEgreso"
+            class="modal-input"
+            type="text"
+            placeholder="¿En qué gastaste?"
+        >
+
+
+
+        <div class="modal-buttons">
+
+
+            <button
+                id="guardarEgreso"
+                class="btn-create">
+
+                Guardar
+
+            </button>
+
+
+
+            <button
+                id="cancelarEgreso"
+                class="btn-cancel">
+
+                Cancelar
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+<!-- =====================================
+     MODAL PRÓXIMO GASTO
+===================================== -->
+
+
+<div id="modalProximo" class="modal">
+
+
+    <div class="modal-box">
+
+
+        <h2>
+            📅 Próximo gasto
+        </h2>
+
+
+        <p>
+            Programa un gasto futuro.
+        </p>
+
+        <p id="fechaSeleccionadaGasto">
+
+    Selecciona un día del calendario
+
+</p>
+
+        <input
+        id="nombreProximo"
+        class="modal-input"
+        type="text"
+        placeholder="Nombre del gasto">
+
+
+
+        <input
+        id="cantidadProximo"
+        class="modal-input"
+        type="number"
+        placeholder="Cantidad">
+
+        <div class="modal-buttons">
+
+
+            <button
+            id="guardarProximo"
+            class="btn-create">
+
+                Guardar
+
+            </button>
+
+
+
+            <button
+            id="cancelarProximo"
+            class="btn-cancel">
+
+                Cancelar
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
 
 <!-- =========================
      MODAL NUEVO HABITO
@@ -760,11 +1149,13 @@ if(temaGuardado){
         </select>
 
 
+
         <input
             id="horaHabito"
             class="modal-input"
             type="time"
         >
+
 
 
         <div class="modal-buttons">
@@ -777,6 +1168,7 @@ if(temaGuardado){
                 Crear
 
             </button>
+
 
 
             <button
@@ -793,11 +1185,10 @@ if(temaGuardado){
 
     </div>
 
-</div>
-
 
 </div>
 
+</section>
 
 <!-- =========================
      BOTTOM NAVIGATION
@@ -850,6 +1241,19 @@ if(temaGuardado){
 
     </button>
 
+    <button
+class="bottom-item"
+data-page="finanzas">
+
+<span class="icon">
+💰
+</span>
+
+<span class="label">
+Finanzas
+</span>
+
+</button>
 
     <button
         class="bottom-item"
@@ -898,10 +1302,12 @@ if(temaGuardado){
 
 </nav>
 
+</div>
 
 <!-- =========================
      SCRIPTS
 ========================= -->
+
 
 <script src="js/utils.js"></script>
 
@@ -935,6 +1341,12 @@ if(temaGuardado){
 
 <script src="js/app.js"></script>
 
+<script src="js/finanzas.js"></script>
+
+
+
+
+</nav>
 
 </body>
 

@@ -215,3 +215,20 @@ body.light .modal h3{
     color:#111827;
 
 }
+
+/* =====================================
+   MODAL FINANZAS
+===================================== */
+
+#modalDinero{
+
+    z-index:9999;
+
+}
+
+
+#modalDinero .modal-box{
+
+    background:#1A1A1A;
+
+}

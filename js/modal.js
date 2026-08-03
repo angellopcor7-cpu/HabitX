@@ -1,14 +1,20 @@
 /* =====================================================
    HABITX 5.0
    modal.js
+
+   Sistema de modal de hábitos
 ===================================================== */
 
 
-document.addEventListener("DOMContentLoaded", ()=>{
+document.addEventListener("DOMContentLoaded",()=>{
+
 
     iniciarModalHabito();
 
+
 });
+
+
 
 
 
@@ -17,17 +23,33 @@ document.addEventListener("DOMContentLoaded", ()=>{
 function iniciarModalHabito(){
 
 
-    const botonAbrir = document.getElementById("nuevoHabito");
 
-    const modal = document.getElementById("modalHabito");
-
-    const botonCerrar = document.getElementById("cerrarModalBtn");
-
-    const botonCrear = document.getElementById("crearHabitoBtn");
+    const botonAbrir =
+    document.getElementById("nuevoHabito");
 
 
+    const modal =
+    document.getElementById("modalHabito");
+
+
+    const botonCerrar =
+    document.getElementById("cerrarModalBtn");
+
+
+    const botonCrear =
+    document.getElementById("crearHabitoBtn");
+
+
+
+
+
+    // Protección
 
     if(!botonAbrir || !modal){
+
+        console.log(
+            "Modal hábitos no encontrado"
+        );
 
         return;
 
@@ -37,7 +59,9 @@ function iniciarModalHabito(){
 
 
 
-    botonAbrir.addEventListener("click", ()=>{
+    // ABRIR MODAL
+
+    botonAbrir.addEventListener("click",()=>{
 
 
         modal.classList.add("show");
@@ -49,29 +73,50 @@ function iniciarModalHabito(){
 
 
 
-    botonCerrar.addEventListener("click", ()=>{
 
 
-        modal.classList.remove("show");
+    // CERRAR MODAL
+
+    if(botonCerrar){
 
 
-    });
+        botonCerrar.addEventListener("click",()=>{
+
+
+            modal.classList.remove("show");
+
+
+        });
+
+
+    }
 
 
 
 
 
-    botonCrear.addEventListener("click", ()=>{
 
 
-        crearHabitoDesdeModal();
+    // CREAR HÁBITO
+
+    if(botonCrear){
 
 
-    });
+        botonCrear.addEventListener("click",()=>{
+
+
+            crearHabitoDesdeModal();
+
+
+        });
+
+
+    }
 
 
 
 }
+
 
 
 
@@ -84,21 +129,37 @@ function crearHabitoDesdeModal(){
 
 
 
-    const nombre = document.getElementById("nombreHabito").value;
+    const nombre =
+    document.getElementById("nombreHabito");
 
 
-    const categoria = document.getElementById("categoriaHabito").value;
+    const categoria =
+    document.getElementById("categoriaHabito");
 
 
-    const hora = document.getElementById("horaHabito").value;
+    const hora =
+    document.getElementById("horaHabito");
 
 
 
 
-    if(nombre.trim()===""){
+    if(!nombre){
+
+        return;
+
+    }
 
 
-        alert("Escribe un nombre");
+
+
+
+
+    if(nombre.value.trim()===""){
+
+
+        alert(
+            "Escribe un nombre"
+        );
 
 
         return;
@@ -111,15 +172,25 @@ function crearHabitoDesdeModal(){
 
 
 
+
     crearNuevoHabito({
 
-        nombre:nombre,
 
-        categoria:categoria,
+        nombre:
+        nombre.value,
 
-        hora:hora
+
+        categoria:
+        categoria ? categoria.value : "General",
+
+
+        hora:
+        hora ? hora.value : ""
+
 
     });
+
+
 
 
 
@@ -129,9 +200,21 @@ function crearHabitoDesdeModal(){
 
 
 
-    document.getElementById("modalHabito")
 
-    .classList.remove("show");
+
+    const modal =
+    document.getElementById("modalHabito");
+
+
+
+    if(modal){
+
+
+        modal.classList.remove("show");
+
+
+    }
+
 
 
 
@@ -139,15 +222,22 @@ function crearHabitoDesdeModal(){
 
     if(typeof cargarHabitos === "function"){
 
+
         cargarHabitos();
+
 
     }
 
 
 
+
+
+
     if(typeof cargarInicioPremium === "function"){
 
+
         cargarInicioPremium();
+
 
     }
 
@@ -161,13 +251,39 @@ function crearHabitoDesdeModal(){
 
 
 
+
+
 function limpiarFormulario(){
 
 
-    document.getElementById("nombreHabito").value="";
+
+    const nombre =
+    document.getElementById("nombreHabito");
 
 
-    document.getElementById("horaHabito").value="";
+    const hora =
+    document.getElementById("horaHabito");
+
+
+
+
+
+    if(nombre){
+
+        nombre.value="";
+
+    }
+
+
+
+
+
+    if(hora){
+
+        hora.value="";
+
+    }
+
 
 
 }

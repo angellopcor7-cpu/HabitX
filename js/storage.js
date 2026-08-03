@@ -22,6 +22,8 @@ const STORAGE_KEYS = {
 
     PERFIL: "habitx_perfil",
 
+    FINANZAS: "habitx_finanzas",
+
 };
 
 
@@ -452,5 +454,99 @@ function agregarLogro(logro){
     logros.unshift(logro);
 
     guardarLogros(logros);
+
+}
+// =====================================
+// FINANZAS
+// =====================================
+
+
+STORAGE_KEYS.FINANZAS = "habitx_finanzas";
+
+
+
+function obtenerFinanzas(){
+
+    return obtenerDatos(
+        STORAGE_KEYS.FINANZAS
+    );
+
+}
+
+
+
+function guardarFinanzas(finanzas){
+
+    guardarDatos(
+        STORAGE_KEYS.FINANZAS,
+        finanzas
+    );
+
+}
+
+
+
+
+function agregarMovimientoFinanzas(movimiento){
+
+
+    const finanzas =
+    obtenerFinanzas();
+
+
+
+    finanzas.unshift({
+
+        id: crearID(),
+
+        tipo: movimiento.tipo,
+
+        cantidad: Number(movimiento.cantidad),
+
+        concepto: movimiento.concepto,
+
+        fecha: Date.now()
+
+    });
+
+
+
+    guardarFinanzas(finanzas);
+
+
+}
+
+// =====================================
+// PROXIMOS GASTOS
+// =====================================
+
+
+function obtenerProximosGastos(){
+
+
+    return JSON.parse(
+
+        localStorage.getItem(
+            "PROXIMOS_GASTOS"
+        )
+
+    ) || [];
+
+
+}
+
+
+
+function guardarProximosGastos(gastos){
+
+
+    localStorage.setItem(
+
+        "PROXIMOS_GASTOS",
+
+        JSON.stringify(gastos)
+
+    );
+
 
 }
