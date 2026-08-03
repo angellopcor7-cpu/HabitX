@@ -5,7 +5,6 @@
    Service Worker PWA
 ===================================================== */
 
-
 const CACHE_NAME = "habitx-v7";
 
 

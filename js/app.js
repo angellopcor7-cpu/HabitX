@@ -222,7 +222,7 @@ if ("serviceWorker" in navigator) {
 
     window.addEventListener("load", ()=>{
 
-        navigator.serviceWorker.register("/HabitX/sw.js")
+        navigator.serviceWorker.register("./sw.js")
 
         .then(()=>{
 
