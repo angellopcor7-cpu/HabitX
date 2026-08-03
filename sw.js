@@ -6,7 +6,7 @@
 ===================================================== */
 
 
-const CACHE_NAME = "habitx-v6";
+const CACHE_NAME = "habitx-v7";
 
 
 
@@ -31,8 +31,12 @@ const ARCHIVOS = [
     "./js/categoria.js",
     "./js/modal.js",
     "./js/finanzas.js",
-    "./js/utils.js"
-
+    "./js/utils.js",
+    "./js/metas.js",
+"./js/logros.js",
+"./js/estadisticas.js",
+"./js/perfil.js",
+    
 ];
 
 
@@ -166,5 +170,44 @@ evento=>{
 
     );
 
+
+});
+
+// =====================================
+// NOTIFICACIONES
+// =====================================
+
+self.addEventListener(
+"push",
+evento=>{
+
+    const datos = evento.data ?
+    evento.data.json()
+    :
+    {
+        titulo:"HabitX",
+        mensaje:"Hora de completar tus hábitos 🌱"
+    };
+
+
+    evento.waitUntil(
+
+        self.registration.showNotification(
+
+            datos.titulo,
+
+            {
+
+                body:datos.mensaje,
+
+                icon:"./icon.png",
+
+                badge:"./icon.png"
+
+            }
+
+        )
+
+    );
 
 });
