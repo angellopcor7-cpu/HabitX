@@ -310,3 +310,27 @@ function obtenerDiaSemana(fecha){
 
 
 }
+
+/* =====================================
+   OBTENER SEMANA DEL AÑO
+===================================== */
+
+function obtenerSemanaActual(){
+
+    const fecha = new Date();
+
+    const inicioAño = new Date(
+        fecha.getFullYear(),
+        0,
+        1
+    );
+
+    const dias = Math.floor(
+        (fecha - inicioAño) / 86400000
+    );
+
+    return Math.ceil(
+        (dias + inicioAño.getDay() + 1) / 7
+    );
+
+}

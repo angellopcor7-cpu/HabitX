@@ -159,10 +159,13 @@ datos.frecuencia === "diario"
 
         racha:0,
 
-        ultimaSemanaCumplida:null,
+progresoSemanal:0,
 
+ultimaSemana:obtenerSemanaActual(),
 
-        historial:[],
+ultimaSemanaCumplida:null,
+
+historial:[],
 
 
         fechaCreacion:Date.now()

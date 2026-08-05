@@ -23,22 +23,43 @@ function reiniciarHabitosDiarios(){
 
     const hoy = obtenerFechaActual();
 
+    const semanaActual = obtenerSemanaActual();
+
     let cambios = false;
 
     habitos.forEach(habito=>{
 
+        /* ==========================
+           NUEVO DÍA
+        ========================== */
+
         if(
-    habito.completado &&
-    habito.ultimaFecha !== hoy
-){
+            habito.completado &&
+            habito.ultimaFecha !== hoy
+        ){
 
-    habito.completado = false;
+            habito.completado = false;
 
-    habito.racha = 0;
+            cambios = true;
 
-    cambios = true;
+        }
 
-}
+
+        /* ==========================
+           NUEVA SEMANA
+        ========================== */
+
+        if(
+            habito.ultimaSemana !== semanaActual
+        ){
+
+            habito.progresoSemanal = 0;
+
+            habito.ultimaSemana = semanaActual;
+
+            cambios = true;
+
+        }
 
     });
 
@@ -199,7 +220,7 @@ ${semanaCompletada(habito) ? "semana-lista":""}`;
 
     📅 Esta semana:
 
-    ${obtenerProgresoSemanal(habito)}
+    ${habito.progresoSemanal || 0}
 
     /
 
@@ -233,19 +254,20 @@ ${semanaCompletada(habito) ? "semana-lista":""}`;
 
 
 
-            <button
+           <button
 
 class="btn-completar"
 
-${semanaCompletada(habito) ? "disabled":""}
+${habito.completado ? "disabled" : ""}
 
 onclick="completarHabito('${habito.id}')">
 
 
-            ${habito.completado ? "✅ Completado":"⭕ Completar"}
+${habito.completado
+? "✔ Completado hoy"
+: "⭕ Completar"}
 
-
-            </button>
+</button>
 
 
 
@@ -338,7 +360,13 @@ function completarHabito(id){
        CAMBIAR ESTADO
     ===================================== */
 
-    habito.completado = !habito.completado;
+    if(habito.completado){
+
+    return;
+
+}
+
+habito.completado = true;
 
 
     /* =====================================
@@ -347,7 +375,25 @@ function completarHabito(id){
 
     if(habito.completado){
 
+        // ==============================
+// PROGRESO SEMANAL
+// ==============================
+
+if(typeof habito.progresoSemanal !== "number"){
+
+    habito.progresoSemanal = 0;
+
+}
+
+if(habito.progresoSemanal < habito.objetivoSemanal){
+
+    habito.progresoSemanal++;
+
+}
+
         actualizarRachaSemanal(habito);
+
+        
 
             // =====================================
     // NOTIFICACION DE RACHA
@@ -737,34 +783,33 @@ function obtenerProgresoSemanal(habito){
 
 function actualizarRachaSemanal(habito){
 
-
-    const progreso =
-    obtenerProgresoSemanal(habito);
-
-
-
     const objetivo =
     habito.objetivoSemanal || 7;
-
-
 
     const semana =
     obtenerSemanaActual();
 
 
+    if(typeof habito.progresoSemanal !== "number"){
+
+        habito.progresoSemanal = 0;
+
+    }
+
 
     if(
-        progreso >= objetivo &&
+
+        habito.progresoSemanal >= objetivo &&
+
         habito.ultimaSemanaCumplida !== semana
+
     ){
 
         habito.racha++;
 
-
         habito.ultimaSemanaCumplida = semana;
 
     }
-
 
 }
 

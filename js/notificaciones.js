@@ -94,7 +94,6 @@ function revisarRecordatorios(){
     habito.completado &&
     habito.ultimaFecha === obtenerFechaActual()
 ){
-
     return;
 
 }
